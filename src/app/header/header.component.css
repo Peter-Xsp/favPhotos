@@ -1,0 +1,31 @@
+.buttons-board {
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 50rem;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  background: linear-gradient(to bottom, #3c3047, #1d142c);
+  padding: 1rem;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+}
+
+button {
+  padding: 1rem;
+  align-items: center;
+  border-radius: 12px;
+  border-width: 2px;
+  margin-inline: 5rem;
+  display: inline-block;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: rgba(98, 160, 210, 0);
+  color: rgb(190, 199, 207);
+}
+button:hover,
+.active {
+  border-style: double;
+  border-color: rgb(199, 6, 6);
+}

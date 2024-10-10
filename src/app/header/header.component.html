@@ -1,0 +1,18 @@
+<header>
+  <div class="buttons-board">
+    <button
+      [ngClass]="{ active: activeButton === 'photos' }"
+      (click)="setActive('photos')"
+      id="photos"
+    >
+      PHOTOS
+    </button>
+    <button
+      [ngClass]="{ active: activeButton === 'fav' }"
+      (click)="setActive('fav')"
+      id="fav"
+    >
+      FAVORITES
+    </button>
+  </div>
+</header>
