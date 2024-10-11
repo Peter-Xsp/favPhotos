@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 import { HeaderComponent } from './header/header.component';
+import { RANDOM_PHOTOS } from './random-photos';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +13,14 @@ import { HeaderComponent } from './header/header.component';
 })
 export class AppComponent {
   title = 'fav-pics-app';
+
+  selectedPhoto = RANDOM_PHOTOS[0];
+
+  public get photoPath(): string {
+    return this.selectedPhoto.url;
+  }
+
+  onSelectUser() {
+    console.log('Clicked!');
+  }
 }

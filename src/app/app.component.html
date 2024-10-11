@@ -1,3 +1,15 @@
 <app-header />
 
-<main></main>
+<main>
+  <ul class="allPhotos">
+    <li (click)="onSelectUser()">
+      <img [src]="photoPath" [alt]="selectedPhoto.id" />
+    </li>
+    <li (click)="onSelectUser()">
+      <img [src]="photoPath" [alt]="selectedPhoto.id" />
+    </li>
+    <li (click)="onSelectUser()">
+      <img [src]="photoPath" [alt]="selectedPhoto.id" />
+    </li>
+  </ul>
+</main>
