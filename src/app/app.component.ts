@@ -2,25 +2,21 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
+import { PhotosComponent } from './photos/photos.component';
 import { RANDOM_PHOTOS } from './random-photos';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent, PhotosComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'fav-pics-app';
+  photos = RANDOM_PHOTOS;
 
-  selectedPhoto = RANDOM_PHOTOS[0];
-
-  public get photoPath(): string {
-    return this.selectedPhoto.url;
-  }
-
-  onSelectUser() {
-    console.log('Clicked!');
+  onSelectPhoto(liked: boolean) {
+    liked = !liked;
+    console.log(liked);
   }
 }

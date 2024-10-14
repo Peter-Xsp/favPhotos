@@ -2,14 +2,18 @@
 
 <main>
   <ul class="allPhotos">
-    <li (click)="onSelectUser()">
-      <img [src]="photoPath" [alt]="selectedPhoto.id" />
+    @for (photo of photos; track photo.id) {
+    <li class="card">
+      <app-photos
+        [url]="photo.url"
+        [id]="photo.id"
+        [liked]="photo.liked"
+        (select)="onSelectPhoto($event)"
+      />
+      @if (photo.liked) {
+      <div class="overlay-heart">❤️</div>
+      }
     </li>
-    <li (click)="onSelectUser()">
-      <img [src]="photoPath" [alt]="selectedPhoto.id" />
-    </li>
-    <li (click)="onSelectUser()">
-      <img [src]="photoPath" [alt]="selectedPhoto.id" />
-    </li>
+    }
   </ul>
 </main>
