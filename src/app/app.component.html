@@ -8,7 +8,7 @@
         [url]="photo.url"
         [id]="photo.id"
         [liked]="photo.liked"
-        (select)="onSelectPhoto($event)"
+        (select)="onSelectPhoto(photo)"
       />
       @if (photo.liked) {
       <div class="overlay-heart">❤️</div>

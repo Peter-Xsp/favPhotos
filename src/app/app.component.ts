@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { PhotosComponent } from './photos/photos.component';
-import { RANDOM_PHOTOS } from './random-photos';
+import { Photo, RANDOM_PHOTOS } from './random-photos';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +13,9 @@ import { RANDOM_PHOTOS } from './random-photos';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  photos = RANDOM_PHOTOS;
-
-  onSelectPhoto(liked: boolean) {
-    liked = !liked;
-    console.log(liked);
+  photos: Photo[] = RANDOM_PHOTOS;
+  onSelectPhoto(photo: Photo) {
+    photo.liked = !photo.liked;
+    console.log(photo.liked);
   }
 }
