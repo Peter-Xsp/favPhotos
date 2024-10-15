@@ -1,4 +1,4 @@
-import { Component, computed, input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-photos',
@@ -13,10 +13,6 @@ export class PhotosComponent {
   liked = input.required<boolean>();
 
   select = output<boolean>();
-
-  photoPath = computed(() => {
-    return this.url();
-  });
 
   onSelectPhoto() {
     this.select.emit(this.liked());

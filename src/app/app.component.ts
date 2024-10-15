@@ -16,6 +16,5 @@ export class AppComponent {
   photos: Photo[] = RANDOM_PHOTOS;
   onSelectPhoto(photo: Photo) {
     photo.liked = !photo.liked;
-    console.log(photo.liked);
   }
 }

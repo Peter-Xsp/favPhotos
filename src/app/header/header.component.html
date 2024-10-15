@@ -1,6 +1,7 @@
 <header>
   <div class="buttons-board">
     <button
+      routerLink=""
       [ngClass]="{ active: activeButton === 'photos' }"
       (click)="setActive('photos')"
       id="photos"
@@ -8,6 +9,7 @@
       PHOTOS
     </button>
     <button
+      routerLink="/favourites"
       [ngClass]="{ active: activeButton === 'fav' }"
       (click)="setActive('fav')"
       id="fav"
