@@ -1,18 +1,2 @@
 <app-header />
-<main>
-  <ul class="allPhotos">
-    @for (photo of photos; track photo.id) {
-    <li class="card">
-      <app-photos
-        [url]="photo.url"
-        [id]="photo.id"
-        [liked]="photo.liked"
-        (select)="onSelectPhoto(photo)"
-      />
-      @if (photo.liked) {
-      <div class="overlay-heart">❤️</div>
-      }
-    </li>
-    }
-  </ul>
-</main>
+<router-outlet />
