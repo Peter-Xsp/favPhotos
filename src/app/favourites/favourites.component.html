@@ -1,11 +1,14 @@
 <main>
-  <p>favorites works!</p>
-  <p>favorites works!</p>
-  <p>favorites works!</p>
-  <p>favorites works!</p>
-  <p>favorites works!</p>
-  <p>favorites works!</p>
-  <p>favorites works!</p>
-  <p>favorites works!</p>
-  <p>favorites works!</p>
+  @if ( likedphotos.length > 0 ) {
+  <ul class="favourites-Photos">
+    @for (photo of likedphotos; track photo.id) {
+    <li class="card">
+      <app-photo [url]="photo.url" [id]="photo.id" [liked]="photo.liked" />
+      <div class="overlay-heart">❤️</div>
+    </li>
+    }
+  </ul>
+  } @else {
+  <p>😒You have no favourites Photos yet!😒</p>
+  }
 </main>

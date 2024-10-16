@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { Photo, RANDOM_PHOTOS } from '../random-photos';
 import { PhotoComponent } from '../photo/photo.component';
 
