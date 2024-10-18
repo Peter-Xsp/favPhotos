@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
-import { Photo, RANDOM_PHOTOS } from '../random-photos';
 import { PhotoComponent } from '../photo/photo.component';
+import { Photo } from '../photo/photo.module';
+import { PhotosService } from './photos.service';
 
 @Component({
   selector: 'app-photos',
@@ -11,7 +12,10 @@ import { PhotoComponent } from '../photo/photo.component';
   styleUrl: './photos.component.css',
 })
 export class PhotosComponent {
-  photos: Photo[] = RANDOM_PHOTOS;
+  constructor(private photosServices: PhotosService) {}
+
+  photos: Photo[] = this.photosServices.RANDOM_PHOTOS;
+
   onSelectPhoto(photo: Photo) {
     photo.liked = !photo.liked;
   }

@@ -26,6 +26,6 @@ button {
 }
 button:hover,
 .active {
-  border-style: double;
+  font-weight: bold;
   border-color: rgb(199, 6, 6);
 }

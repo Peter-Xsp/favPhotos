@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +12,16 @@ import { RouterLink } from '@angular/router';
 export class HeaderComponent {
   activeButton: string = 'photos';
 
-  setActive(button: string) {
-    this.activeButton = button;
+  private router = inject(Router);
+  constructor() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/') {
+          this.activeButton = 'photos';
+        } else if (event.url === '/favourites') {
+          this.activeButton = 'favourites';
+        }
+      }
+    });
   }
 }
