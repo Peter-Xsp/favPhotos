@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { PhotoComponent } from '../photo/photo.component';
 import { Photo } from '../photo/photo.module';
 import { PhotosService } from './photos.service';
+import { FavouritesService } from '../favourites/favourites.service';
 
 @Component({
   selector: 'app-photos',
@@ -12,11 +13,22 @@ import { PhotosService } from './photos.service';
   styleUrl: './photos.component.css',
 })
 export class PhotosComponent {
-  constructor(private photosServices: PhotosService) {}
+  photos: Photo[];
 
-  photos: Photo[] = this.photosServices.RANDOM_PHOTOS;
+  constructor(
+    private photosServices: PhotosService,
+    private favouritesService: FavouritesService
+  ) {
+    this.photos = this.photosServices.getAllPhotos();
+  }
 
-  onSelectPhoto(photo: Photo) {
-    photo.liked = !photo.liked;
+  onPhotoLike(photo: Photo) {
+    this.favouritesService.toggleLike(photo);
+    this.photosServices.toggleLike(photo);
+  }
+
+  refresh() {
+    this.photosServices.refreshPhotos();
+    this.photos = this.photosServices.getAllPhotos();
   }
 }

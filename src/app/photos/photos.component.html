@@ -6,7 +6,7 @@
         [url]="photo.url"
         [id]="photo.id"
         [liked]="photo.liked"
-        (select)="onSelectPhoto(photo)"
+        (select)="onPhotoLike(photo)"
       />
       @if (photo.liked) {
       <div class="overlay-heart">❤️</div>
