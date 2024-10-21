@@ -3,13 +3,10 @@
   <ul class="favourites-Photos">
     @for (photo of likedPhotos; track photo.id) {
     <li class="card">
-      <app-photo
-        [url]="photo.url"
-        [id]="photo.id"
-        [liked]="photo.liked"
-        (select)="onPhotoLike(photo)"
-      />
-      <div class="overlay-heart">❤️</div>
+      <a [routerLink]="['/favourites', photo.id]">
+        <app-photo [url]="photo.url" [id]="photo.id" [liked]="photo.liked" />
+        <div class="overlay-heart">❤️</div>
+      </a>
     </li>
     }
   </ul>

@@ -2,7 +2,6 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import { Photo } from '../photo/photo.module';
-import { PhotosService } from '../photos/photos.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +9,7 @@ import { PhotosService } from '../photos/photos.service';
 export class FavouritesService {
   FAVOURITE_PHOTOS: Photo[] = [];
 
-  constructor(
-    private photosService: PhotosService,
-    @Inject(PLATFORM_ID) private platformId: object
-  ) {
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
     if (isPlatformBrowser(this.platformId)) {
       const savedFavourites = localStorage.getItem('favouritePhotos');
       if (savedFavourites) {
@@ -33,6 +29,7 @@ export class FavouritesService {
 
   toggleLike(photo: Photo) {
     const index = this.FAVOURITE_PHOTOS.findIndex((p) => p.id === photo.id);
+
     if (index > -1) {
       this.FAVOURITE_PHOTOS.splice(index, 1);
     } else {
@@ -46,5 +43,13 @@ export class FavouritesService {
 
   getFavouritePhotos(): Photo[] {
     return this.FAVOURITE_PHOTOS;
+  }
+
+  deleteFavourite(photo: Photo) {
+    const index = this.FAVOURITE_PHOTOS.findIndex((p) => p.id === photo.id);
+    if (index > -1) {
+      this.FAVOURITE_PHOTOS.splice(index, 1);
+      this.updateFavourites();
+    }
   }
 }

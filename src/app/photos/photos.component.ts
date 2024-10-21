@@ -13,7 +13,7 @@ import { FavouritesService } from '../favourites/favourites.service';
   styleUrl: './photos.component.css',
 })
 export class PhotosComponent {
-  photos: Photo[];
+  photos: Photo[] = [];
 
   constructor(
     private photosServices: PhotosService,
@@ -24,11 +24,11 @@ export class PhotosComponent {
 
   onPhotoLike(photo: Photo) {
     this.favouritesService.toggleLike(photo);
-    this.photosServices.toggleLike(photo);
+    photo.liked = !photo.liked;
   }
 
-  refresh() {
-    this.photosServices.refreshPhotos();
+  refreshPage() {
+    this.photosServices.newRandomPhotos();
     this.photos = this.photosServices.getAllPhotos();
   }
 }

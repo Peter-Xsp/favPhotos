@@ -1,0 +1,9 @@
+<main>
+  @if (photo) {
+  <app-photo [url]="photo.url" [id]="photo.id" [liked]="photo.liked" />
+  <span>
+    <button (click)="cancel()" class="cancel">CANCEL</button>
+    <button (click)="deletePhoto()" class="delete">DELETE</button>
+  </span>
+  }
+</main>
