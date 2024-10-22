@@ -28,7 +28,7 @@ export class PhotosComponent {
   }
 
   refreshPage() {
-    this.photosServices.newRandomPhotos();
+    this.photosServices.generateRandomPhotos();
     this.photos = this.photosServices.getAllPhotos();
   }
 }
