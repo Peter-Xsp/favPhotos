@@ -15,7 +15,17 @@ export class PhotosService {
     this.generateRandomPhotos();
   }
 
-  generateRandomPhotos() {
+  resolvePhotoUrl(photoUrl: string): Observable<string> {
+    return this.http
+      .get(photoUrl, { observe: 'response', responseType: 'blob' })
+      .pipe(map((response) => response.url!));
+  }
+
+  private generateUniqueId(): string {
+    return 'photo-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
+  }
+
+  generateRandomPhotos(): Observable<Photo[]> {
     const requests: Observable<Photo>[] = [];
 
     for (let i = 1; i <= 9; i++) {
@@ -30,22 +40,15 @@ export class PhotosService {
       requests.push(photoRequest);
     }
 
-    forkJoin(requests).subscribe((photos: Photo[]) => {
-      this.RANDOM_PHOTOS = photos;
-    });
+    return forkJoin(requests).pipe(
+      map((photos: Photo[]) => {
+        this.RANDOM_PHOTOS = photos;
+        return photos;
+      })
+    );
   }
 
   getAllPhotos(): Photo[] {
     return this.RANDOM_PHOTOS;
-  }
-
-  resolvePhotoUrl(photoUrl: string): Observable<string> {
-    return this.http
-      .get(photoUrl, { observe: 'response', responseType: 'blob' })
-      .pipe(map((response) => response.url!));
-  }
-
-  private generateUniqueId(): string {
-    return 'photo-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
   }
 }

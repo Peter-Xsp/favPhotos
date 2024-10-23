@@ -19,7 +19,14 @@ export class PhotosComponent {
     private photosServices: PhotosService,
     private favouritesService: FavouritesService
   ) {
-    this.photos = this.photosServices.getAllPhotos();
+    this.loadPhotos();
+  }
+
+  loadPhotos() {
+    this.photosServices.generateRandomPhotos().subscribe((photos) => {
+      this.photos = photos;
+      console.log(this.photos);
+    });
   }
 
   onPhotoLike(liked: boolean, photo: Photo) {
@@ -28,7 +35,6 @@ export class PhotosComponent {
   }
 
   refreshPage() {
-    this.photosServices.generateRandomPhotos();
-    this.photos = this.photosServices.getAllPhotos();
+    this.loadPhotos();
   }
 }
