@@ -15,6 +15,6 @@ export class PhotoComponent {
   select = output<boolean>();
 
   onSelectPhoto() {
-    this.select.emit(this.liked());
+    this.select.emit(!this.liked());
   }
 }

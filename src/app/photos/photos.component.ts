@@ -22,9 +22,9 @@ export class PhotosComponent {
     this.photos = this.photosServices.getAllPhotos();
   }
 
-  onPhotoLike(photo: Photo) {
+  onPhotoLike(liked: boolean, photo: Photo) {
+    photo.liked = liked;
     this.favouritesService.toggleLike(photo);
-    photo.liked = !photo.liked;
   }
 
   refreshPage() {
