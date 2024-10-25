@@ -25,7 +25,6 @@ export class PhotosComponent {
   loadPhotos() {
     this.photosServices.generateRandomPhotos().subscribe((photos) => {
       this.photos = photos;
-      console.log(this.photos);
     });
   }
 

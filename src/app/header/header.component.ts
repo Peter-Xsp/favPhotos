@@ -18,7 +18,7 @@ export class HeaderComponent {
       if (event instanceof NavigationEnd) {
         if (event.url === '/') {
           this.activeButton = 'photos';
-        } else if (event.url === '/favourites') {
+        } else if (event.url === '/favourites' || '/favourites/:id') {
           this.activeButton = 'favourites';
         }
       }
